@@ -1,0 +1,31 @@
+
+{
+    "name": "minutemailer/laravel-honeypot",
+    "description": "Flexible credits for Laravel",
+    "keywords": ["laravel", "credits"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tobias Bleckert",
+            "email": "tobias@minutemailer.com"
+        },
+        {
+            "name": "Carlos Egusquiza Arias",
+            "email": "carlos@minutemailer.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "illuminate/support": "5.7.x|5.8.x",
+    },
+    "autoload": {
+        "psr-4": {
+            "Minutemailer\\Honeypot\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "laravel/framework": "5.7.x"
+    }
+}
