@@ -20,6 +20,8 @@ class CreateCreditBucketsTable extends Migration
             $table->unsignedInteger('amount');
             $table->dateTime('expires_at')->nullable();
             $table->timestamps();
+
+            $table->foreign('type_id')->references('id')->on('credit_types');
         });
     }
 
