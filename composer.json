@@ -27,5 +27,12 @@
     "prefer-stable": true,
     "require-dev": {
         "laravel/framework": "5.7.x"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Minutemailer\\Honeypot\\Providers\\HoneypotServiceProvider"
+            ]
+        }
     }
 }
