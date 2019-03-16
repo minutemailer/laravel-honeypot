@@ -28,7 +28,7 @@ class MakeMigrationCommand extends Command
         $dateTime = date('Y_m_d_His');
         $fileName = base_path('database/migrations/' . $dateTime . '_create_credit_buckets_table.php');
 
-        file_put_contents($fileName, file_get_contents(__DIR__ . 'stubs/create_credit_buckets_table.stub'));
+        file_put_contents($fileName, file_get_contents(__DIR__ . '/stubs/create_credit_buckets_table.stub'));
     }
 
     /**
@@ -37,9 +37,9 @@ class MakeMigrationCommand extends Command
     private function makeTypesMigration()
     {
         $dateTime = date('Y_m_d_His');
-        $fileName = base_path('database/migrations/' . $dateTime . '_create_credit_buckets_table.php');
+        $fileName = base_path('database/migrations/' . $dateTime . '_create_credit_types_table.php');
 
-        file_put_contents($fileName, file_get_contents(__DIR__ . 'stubs/create_credit_types_table.stub'));
+        file_put_contents($fileName, file_get_contents(__DIR__ . '/stubs/create_credit_types_table.stub'));
     }
 
     /**
