@@ -18,7 +18,7 @@ class CreditBucket extends Model
     public function use(int $amount)
     {
         if ($amount > $this->available()) {
-            return new InsufficientFundsException();
+            throw new InsufficientFundsException();
         }
 
         $this->increment('used', $amount);
@@ -27,7 +27,7 @@ class CreditBucket extends Model
     public function add(int $amount)
     {
         if ($amount <= 0) {
-            return new \UnexpectedValueException('Cannot decrease the amount of credits. Use the method `use`');
+            throw new \UnexpectedValueException('Cannot decrease the amount of credits. Use the method `use`');
         }
 
         $this->increment('amount', $amount);
