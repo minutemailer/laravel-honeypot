@@ -3,17 +3,11 @@
 namespace Minutemailer\Honeypot\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Minutemailer\Honeypot\Exceptions\InsufficientFundsException;
 
 class CreditBucket extends Model
 {
     protected $table = 'credit_buckets';
-
-    public function type(): BelongsTo
-    {
-        return $this->belongsTo(CreditType::class, 'type_id');
-    }
 
     public function use(int $amount)
     {

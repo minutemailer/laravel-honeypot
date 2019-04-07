@@ -15,7 +15,6 @@ class CreateCreditBucketsTable extends Migration
     {
         Schema::create('credit_buckets', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('type_id')->nullable();
             $table->unsignedInteger('user_id');
             $table->string('name')->nullable();
             $table->unsignedInteger('amount');
@@ -23,7 +22,7 @@ class CreateCreditBucketsTable extends Migration
             $table->dateTime('expires_at')->nullable();
             $table->timestamps();
 
-            $table->foreign('type_id')->references('id')->on('credit_types');
+            $table->unique(['user_id', 'name']);
         });
     }
 
