@@ -8,6 +8,7 @@ use Minutemailer\Honeypot\Exceptions\InsufficientFundsException;
 class CreditBucket extends Model
 {
     protected $table = 'credit_buckets';
+    protected $guarded = ['id'];
 
     public function use(int $amount)
     {
