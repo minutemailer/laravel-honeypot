@@ -19,6 +19,7 @@ class CreateCreditBucketsTable extends Migration
             $table->string('name')->nullable();
             $table->unsignedInteger('amount');
             $table->unsignedInteger('used')->default(0);
+            $table->dateTime('valid_from')->nullable();
             $table->dateTime('expires_at')->nullable();
             $table->timestamps();
 
