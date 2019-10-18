@@ -31,5 +31,6 @@ class MakeMigrationCommand extends Command
         $fileName = base_path('database/migrations/' . $dateTime . '_create_credit_buckets_table.php');
 
         copy(__DIR__ . '/stubs/create_credit_buckets_table.stub', $fileName);
+        $this->line(\sprintf('Migration %s file created', $fileName));
     }
 }
