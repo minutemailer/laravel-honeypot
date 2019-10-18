@@ -21,7 +21,7 @@ class CreditBucket extends Model
 
     public function add(int $amount)
     {
-        if ($amount <= 0) {
+        if ($amount < 0) {
             throw new \UnexpectedValueException('Cannot decrease the amount of credits. Use the method `use`');
         }
 
