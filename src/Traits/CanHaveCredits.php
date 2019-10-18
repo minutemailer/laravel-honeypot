@@ -30,14 +30,14 @@ trait CanHaveCredits
         return $baseQuery->orderBy('created_at')->first();
     }
 
-    public function addCreditBucket(?string $name = null, array $options = []): CreditBucket
+    public function addCreditBucket(string $name = null, array $options = []): CreditBucket
     {
         $attributes = array_merge(['name' => $name], $options);
 
         return $this->creditBuckets()->create($attributes);
     }
 
-    public function getCreditBucket(?string $name = null): CreditBucket
+    public function getCreditBucket(string $name = null): CreditBucket
     {
         if ($name === null) {
             return $this->getDefaultCreditBucket();
