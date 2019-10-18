@@ -37,13 +37,19 @@ trait CanHaveCredits
         return $this->creditBuckets()->create($attributes);
     }
 
-    public function getCreditBucket(?string $name = null): ?CreditBucket
+    public function getCreditBucket(?string $name = null): CreditBucket
     {
         if ($name === null) {
             return $this->getDefaultCreditBucket();
         }
 
-        return $this->creditBuckets()->where('name', $name)->first();
+        $bucket = $this->creditBuckets()->where('name', $name)->first();
+
+        if ($bucket === null) {
+            throw new UnavailableCreditBucketException();
+        }
+
+        return $bucket;
     }
 
     public function creditBuckets(): HasMany
