@@ -9,6 +9,7 @@ class CreditBucket extends Model
 {
     protected $table = 'credit_buckets';
     protected $guarded = ['id'];
+    protected $dates = ['valid_from', 'expires_at'];
 
     public function use(int $amount)
     {
