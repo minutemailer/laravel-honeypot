@@ -37,6 +37,11 @@ trait CanHaveCredits
         return $this->creditBuckets()->create($attributes);
     }
 
+    public function hasCreditBucket(string $name): bool
+    {
+        return $this->creditBuckets()->where('name', $name)->exists();
+    }
+
     public function getCreditBucket(string $name = null): CreditBucket
     {
         if ($name === null) {
