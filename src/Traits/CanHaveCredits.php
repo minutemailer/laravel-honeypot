@@ -10,15 +10,14 @@ trait CanHaveCredits
 {
     private function getDefaultCreditBucket(): CreditBucket
     {
-        $baseQuery = $this->creditBuckets()->where('valid_from', '>=', \date('Y-m-d'))->whereRaw('`used` <= `amount`');
+        $baseQuery = $this->creditBuckets()->whereRaw('`used` <= `amount`');
         $creditBucketsCount = $baseQuery->count();
 
         if ($creditBucketsCount === 0) {
             throw new UnavailableCreditBucketException();
-        }
-        // Only one credit bucket
+        } // Only one credit bucket
         elseif ($creditBucketsCount === 1) {
-            return $this->creditBuckets()->first();
+            return $baseQuery->first();
         }
 
         $expiresOrCreatedFirst = $baseQuery->orderBy('expires_at')->orderBy('created_at')->first();
@@ -57,8 +56,16 @@ trait CanHaveCredits
         return $bucket;
     }
 
-    public function creditBuckets(): HasMany
+    public function allCreditBuckets(): HasMany
     {
         return $this->hasMany(CreditBucket::class);
+    }
+
+    /**
+     * Lists only valid credit buckets
+     */
+    public function creditBuckets(): HasMany
+    {
+        return $this->allCreditBuckets()->valid();
     }
 }
