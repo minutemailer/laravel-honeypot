@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Minutemailer\Honeypot\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Minutemailer\Honeypot\Console\MakeMigrationCommand;
 
 class HoneypotServiceProvider extends ServiceProvider
 {
@@ -15,7 +18,7 @@ class HoneypotServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                \Minutemailer\Honeypot\Console\MakeMigrationCommand::class,
+                MakeMigrationCommand::class,
             ]);
         }
     }
