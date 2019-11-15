@@ -17,6 +17,7 @@
         "php": ">=7.1",
         "illuminate/console": "^5.5,<5.9",
         "illuminate/database": "^5.5,<5.9",
+        "illuminate/queue": "^5.5,<5.9",
         "illuminate/support": "^5.5,<5.9"
     },
     "autoload": {
