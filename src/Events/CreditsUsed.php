@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Minutemailer\Shared\Events;
+namespace Minutemailer\Honeypot\Events;
 
 class CreditsUsed extends BaseCreditsEvent
 {
