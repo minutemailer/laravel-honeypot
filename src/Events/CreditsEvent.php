@@ -7,13 +7,14 @@ namespace Minutemailer\Honeypot\Events;
 use Illuminate\Queue\SerializesModels;
 use Minutemailer\Honeypot\Models\CreditBucket;
 
-class BaseCreditsEvent
+class CreditsEvent
 {
     use SerializesModels;
 
     protected $bucket;
     protected $amount;
     protected $message;
+    protected $metadata;
 
     public function __construct(CreditBucket $bucket, int $amount)
     {
@@ -39,5 +40,15 @@ class BaseCreditsEvent
     public function setMessage(string $message): void
     {
         $this->message = $message;
+    }
+
+    public function getMetadata(): ?array
+    {
+        return $this->metadata;
+    }
+
+    public function setMetaData(?array $metadata): void
+    {
+        $this->metadata = $metadata;
     }
 }
