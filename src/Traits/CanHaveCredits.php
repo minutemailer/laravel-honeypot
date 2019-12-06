@@ -10,7 +10,7 @@ use Minutemailer\Honeypot\Models\CreditBucket;
 
 trait CanHaveCredits
 {
-    private function getDefaultCreditBucket(): CreditBucket
+    public function getDefaultCreditBucket(): CreditBucket
     {
         $baseQuery = $this->creditBuckets()->whereRaw('`used` <= `amount`');
         $creditBucketsCount = $baseQuery->count();
