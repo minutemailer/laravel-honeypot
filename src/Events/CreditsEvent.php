@@ -13,7 +13,7 @@ class CreditsEvent
 
     protected $bucket;
     protected $amount;
-    protected $message;
+    protected $type;
     protected $metadata;
 
     public function __construct(CreditBucket $bucket, int $amount)
@@ -32,14 +32,14 @@ class CreditsEvent
         return $this->amount;
     }
 
-    public function getMessage(): ?string
+    public function getType(): ?string
     {
-        return $this->message;
+        return $this->type;
     }
 
-    public function setMessage(string $message): void
+    public function setType(?string $type): void
     {
-        $this->message = $message;
+        $this->type = $type;
     }
 
     public function getMetadata(): ?array
