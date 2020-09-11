@@ -12,7 +12,7 @@ trait CanHaveCredits
 {
     public function getDefaultCreditBucket(): CreditBucket
     {
-        $baseQuery = $this->creditBuckets()->whereRaw('`used` <= `amount`');
+        $baseQuery = $this->creditBuckets()->whereRaw('`used` < `amount`');
         $creditBucketsCount = $baseQuery->count();
 
         if ($creditBucketsCount === 0) {
