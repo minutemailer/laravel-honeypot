@@ -12,7 +12,10 @@ class CreditBucket extends Model
 {
     protected $table = 'credit_buckets';
     protected $guarded = ['id'];
-    protected $dates = ['valid_from', 'expires_at'];
+    protected $casts = [
+        'valid_from' => 'datetime',
+        'expires_at' => 'datetime',
+    ];
 
     public function scopeValid(Builder $query): Builder
     {
@@ -25,7 +28,7 @@ class CreditBucket extends Model
         });
     }
 
-    public function use(int $amount)
+    public function use(int $amount): void
     {
         if ($amount > $this->available()) {
             throw new InsufficientFundsException();
@@ -34,7 +37,7 @@ class CreditBucket extends Model
         $this->increment('used', $amount);
     }
 
-    public function add(int $amount)
+    public function add(int $amount): void
     {
         if ($amount < 0) {
             throw new \UnexpectedValueException('Cannot decrease the amount of credits. Use the method `use`');
